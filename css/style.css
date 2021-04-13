@@ -1,0 +1,43 @@
+
+body{
+  background-color: salmon; 
+}
+header{ 
+  border-color: black;
+  background-color: rgba(121, 104, 104, .4);
+  padding: 5px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  margin:0px; 
+  width: 100%;
+}
+
+h1 {
+  padding: 2px; 
+  text-align: center; 
+  font-size: 40px; 
+  font-family: 'Roboto' , sans-serif; 
+  font-weight: bold; 
+  color: whitesmoke;  
+  margin: 2px; 
+}
+h2 {
+  margin: 15px; 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 30px; 
+  font-weight: bold;
+  font-style: italic; 
+  color: white; 
+}
+#allImages {
+  height:150pt;
+  width:200pt;  
+  margin: 10px; 
+}
+li{
+  list-style-type: square;
+  margin: 10pt; 
+  list-style-position: inside;
+}
