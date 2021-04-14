@@ -1,127 +1,90 @@
 'use strict';
 
-// Creating the object 'seattle' 
-const seattle = { 
-  // Adding the name 'Seattle'
-  name: 'Seattle', 
-  // Create an average sale property for seattle 
-  avgCookieSale: 0,
-  // Photo of Seattle
-  photo: './img/SeattleViewinblue.jpeg', 
-  // Creating a method in this object to output random cookies 
-  getAverageSale: function(){
-    console.log('This is how many cookies before the method: ' + this.avgCookieSale);
-    this.avgCookieSale = randomCust(23, 65) + ' cookies';
-    console.log('This is how many cookies after the random customers have been pushed through in Seattle: ' + this.avgCookieSale); 
+// Constructor, object for Location
+function Locations(name, photo, min, max, avgCustomer) {
+    this.name = name;
+    this.photo = photo;
+    this.min = min;
+    this.max = max;
+    this.avgCustomer = avgCustomer;
+  }
+function randCustNum(min, max)  {
+  return Math.floor(Math.random() * (max - min + 1) + min); 
+}
+Locations.prototype.getCustomer = function() { 
+  this.customer = randCustNum(this.min, this.max) + ' cookies'
+}
+const seattle = new Locations('Seattle','./img/SeattleViewinblue.jpeg',23,26,6.3); 
+console.log(seattle);
+console.log(seattle.getCustomer());
+const tokyo = new Locations('Tokyo','/img/Tokyo.jpeg',3,24,1.2);
+console.log(tokyo); 
+console.log(tokyo.getCustomer());
+const dubai = new Locations('Dubai','/img/Dubai.jpeg',11,38,3.7);
+console.log(dubai); 
+console.log(dubai.getCustomer());
+const paris = new Locations('Paris','./img/Paris.jpeg',20,38,2.3);
+console.log(paris);
+console.log(paris.getCustomer());
+const lima = new Locations('Lima', './img/Lima.jpeg',2,16,4.6);
+console.log(lima); 
+console.log(lima.getCustomer());
+
+const operatingHours = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+
+Locations.prototype.generateSales = function() {
+  this.grandTotal =0; 
+  this.hourlySales = []; 
+    for(let i=0; i<operatingHours.length; i++){
+    let customers = this.getCustomer(); 
+    let soldCookies = Math.floor(customers * this.avgCustomer);
+     this.grandTotal += soldCookies; 
+     console.log(soldCookies);
+    this.hourlySales.push(soldCookies); 
   }
 }
-// Creating the object 'tokyo' 
-const tokyo = {
-  // Adding the name 'Tokyo'
-  name: 'Tokyo',
-  // Create an average sale property for tokyo 
-  avgCookieSale: 0, 
-  // photo of Tokyo 
-  photo: './img/Tokyo.jpeg',
-  // Creating a method in this object to output random cookies
-  getAverageSale: function(){
-    console.log('This is how many cookies before the method: ' + this.avgCookieSale);
-    this.avgCookieSale = randomCust(23, 65) + ' cookies';
-    console.log('This is how many cookies after the random customers have been pushed through in Tokyo: ' + this.avgCookieSale); 
+
+seattle.generateSales();  
+tokyo.generateSales(); 
+dubai.generateSales(); 
+paris.generateSales(); 
+lima.generateSales(); 
+
+const locationDivElement = document.getElementById("locations"); 
+const locationTableArrayRows = ['seattle', 'tokyo', 'dubai', 'paris', 'lima']; 
+Locations.prototype.render = function() { 
+
+  const locationArticle = document.createElement('article'); 
+  locationDivElement.appendChild(locationArticle); 
+
+  const h2Element = document.createElement('h2');
+  h2Element.textContent = this.name; 
+  locationArticle.appendChild(h2Element); 
+
+  const imgElement = document.createElement('img'); 
+  imgElement.setAttribute('src', this.photo);
+  imgElement.setAttribute('alt', this.name); 
+  imgElement.setAttribute('id', 'allImages'); 
+  locationArticle.appendChild(imgElement); 
+
+  const tableElement = document.createElement('table');
+  locationArticle.appendChild(tableElement);
+
+  for(let j = 0; j < locationTableArrayRows.length; j++){
+  const trElement = document.createElement('tr'); 
+  trElement.textContent = locationTableArrayRows[j];  
+  tableElement.appendChild(trElement); 
+    for(let i = 0; i < operatingHours.length; i++){
+    const thElementOne = document.createElement('th');
+    thElementOne.textContent = operatingHours[i];
+    trElement.appendChild(thElementOne);
+  }
+
   }
 }
-const dubai = { 
- // Adding the name 'Dubai'
- name: 'Dubai',
- // Create an average sale property for dubai 
- avgCookieSale: 0, 
- // photo of Dubai 
- photo: './img/Dubai.jpeg',
- // Creating a method in this object to output random cookies
- getAverageSale: function(){
-   console.log('This is how many cookies before the method Dubai: ' + this.avgCookieSale);
-   this.avgCookieSale = randomCust(23, 65) + ' cookies';
-   console.log('This is how many cookies after the random customers have been pushed through in Dubai: ' + this.avgCookieSale); 
- }
-}
-const paris = { 
-  // Adding the name 'Paris'
-  name: 'Paris',
-  // Create an average sale property for paris 
-  avgCookieSale: 0, 
-  // photo of Paris
-  photo: './img/Paris.jpeg',
-  // Creating a method in this object to output random cookies
-  getAverageSale: function(){
-    console.log('This is how many cookies before the method paris: ' + this.avgCookieSale);
-    this.avgCookieSale = randomCust(23, 65) + ' cookies';
-    console.log('This is how many cookies after the random customers have been pushed through in Paris: ' + this.avgCookieSale); 
-  }
- }
- const lima = { 
-  // Adding the name 'Lima'
-  name: 'Lima',
-  // Create an average sale property for lima 
-  avgCookieSale: 0, 
-  // photo of Lima
-  photo: './img/Lima.jpeg',
-  // Creating a method in this object to output random cookies
-  getAverageSale: function(){
-    console.log('This is how many cookies before the method Lima: ' + this.avgCookieSale);
-    this.avgCookieSale = randomCust(23, 65) + ' cookies';
-    console.log('This is how many cookies after the random customers have been pushed through in Lima: ' + this.avgCookieSale); 
-  }
- }
-// This is the function that will generate the random number of customers 
-function randomCust(min,max) {
-  return Math.floor(Math.random() * (max - min) + min); 
-}
-// This is to call the object of seattle with the method to get the average sales
-//seattle.getAverageSale(); 
-//tokyo.getAverageSale(); 
-//dubai.getAverageSale();
-//paris.getAverageSale();
-//lima.getAverageSale(); 
 
-const locationArray = [seattle, tokyo, dubai, paris, lima]; 
-
-const locationProfiles = document.getElementById("locations")
-
-for(let i =0; i < locationArray.length; i++){
-
-  const article = document.createElement("article");
-  locationProfiles.appendChild(article); 
-
-  let currentLocation = locationArray[i]; 
-  const h2Element = document.createElement("h2");
-  h2Element.textContent = currentLocation.name;
-  article.appendChild(h2Element);
-
-  console.log(currentLocation.name); 
-
-  const imgElement = document.createElement("img");
-  imgElement.setAttribute("id", 'allImages'); 
-  imgElement.setAttribute("src", currentLocation.photo);
-  imgElement.setAttribute("alt", 'Salmon Cookies in ${currentLocation.name}.')
-  article.appendChild(imgElement); 
-
-  const operatingHours = ['6AM','7AM','8AM','9AM','10AM','11AM','12PM','1PM','2PM', '3PM','4PM','5PM','6PM','7PM']
-  const ulElement = document.createElement("ul");
-  article.appendChild(ulElement);
-    
-    let j = 0;
-    while(j < operatingHours.length){
-      const liElement = document.createElement("li");
-      currentLocation.getAverageSale();
-      liElement.textContent = 'At '+operatingHours[j]+', the average cookie sale was ' +currentLocation.avgCookieSale +'.'; 
-      currentLocation.getAverageSale();
-      ulElement.appendChild(liElement); 
-      j++; 
-      console.log('At ' + operatingHours[j] +' '+ currentLocation.avgCookieSale + ' was  ' +currentLocation.avgCookieSale + '.'); 
-      
-    }
-
-
-
-}
-
+seattle.render(); 
+tokyo.render(); 
+dubai.render(); 
+paris.render(); 
+lima.render(); 
