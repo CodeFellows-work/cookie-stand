@@ -13,7 +13,6 @@ header{
   margin:0px; 
   width: 100%;
 }
-
 h1 {
   padding: 2px; 
   text-align: center; 
@@ -40,4 +39,29 @@ li{
   list-style-type: square;
   margin: 10pt; 
   list-style-position: inside;
+}
+table{
+  border-color: black;
+  border-style:solid; 
+  border-width: thin;
+  margin: 10px; 
+  width: 300px; 
+  height: 200px; 
+  align-content: center; 
+}
+th{
+  
+  border-color: black;
+  border-style:solid; 
+  border-width: thin;
+  margin: 10px; 
+  width: 300px; 
+  height: 200px; 
+}
+tr{
+  font-size: 20pt;
+  border-color: black;
+  border-style:solid; 
+  border-width: thin;
+  margin: 10px; 
 }
