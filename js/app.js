@@ -113,7 +113,9 @@ for(let j = 0; j<locationsArray.length; j++){
 const tfootElement = document.createElement('tfoot'); 
 tableElement.appendChild(tfootElement);
 
-const trFootElement = document.createElement('td'); 
-trFootElement.textContent = grandTotals + ' Total Cookies Sold'; 
-tfootElement.appendChild(trFootElement); 
-
+  for(let i =0; i < operatingHours.length; i++){
+  const trFootElement = document.createElement('td'); 
+  trFootElement.textContent = grandTotals + ' Total Cookies Sold'; 
+  tfootElement.appendChild(trFootElement); 
+  }
+ 
