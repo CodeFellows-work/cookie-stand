@@ -41,27 +41,47 @@ li{
   list-style-position: inside;
 }
 table{
-  border-color: black;
-  border-style:solid; 
-  border-width: thin;
   margin: 10px; 
   width: 300px; 
   height: 200px; 
   align-content: center; 
+  border-color: black;
+  background-color: rgba(121, 104, 104, .4);
+  padding: 5px;  
+  border-style: solid;
+  border-width: 5px;
+  
 }
 th{
-  
-  border-color: black;
-  border-style:solid; 
-  border-width: thin;
+  color: white; 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 18px; 
   margin: 10px; 
-  width: 300px; 
-  height: 200px; 
+  padding: 10px; 
+ 
+  
 }
 tr{
-  font-size: 20pt;
+  color: white; 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 18 px; 
+  margin: 20px; 
+  padding: 10px; 
+  width: 2px; 
+}
+td{
+  color: white; 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 15px; 
+  margin: 20px; 
+  padding: 10px; 
+  width: 2px; 
+}
+tfoot{
   border-color: black;
-  border-style:solid; 
-  border-width: thin;
-  margin: 10px; 
+  background-color: rgba(121, 104, 104, .4);
+  padding: 5px;  
+  border-style: solid;
+  border-width: 5px;
+  
 }
