@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Constructor, object for Location
 function Locations(name, photo, min, max, avgCustomer) {
   this.name = name;
@@ -34,22 +33,28 @@ let formElement = document.getElementById('newLocation');
 // Create a function for the form 
 function handleSubmit(event) { 
   event.preventDefault();
+  // input from will be used in JavaScript
   let name = event.target.name.value; 
   let photo = event.target.photo.value; 
   let min = event.target.min.valueAsNumber; 
   let max = event.target.max.valueAsNumber; 
   let avgCustomer = event.target.avgCustomer.valueAsNumber; 
+  // create new location 
   const LocationFromForm = new Locations(name, photo, min, max, avgCustomer);
+  // push the new location into the location array 
   locationsArray.push(LocationFromForm); 
-  for(let i = 4; i > -1;i--){
-  let rows = document.getElementById('salesTable');
-  rows.deleteRow(i); 
-  }
   LocationFromForm.getCustomer();
   LocationFromForm.generateSales();
-  renderTable(); 
+  // wipe any existing data so that, render with new data occurs 
+  tableElement.innerHTML = ''; 
+  renderHeader();
+  renderAllStores();
+  wrapFooter(); 
+  // LocationFromForm.render();
+  // renderTable(); 
   event.target.reset(); 
 } 
+// form listener for events 
 formElement.addEventListener('submit', handleSubmit); 
 // An array is created for operating hours 
 const operatingHours = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
@@ -70,7 +75,7 @@ Locations.prototype.generateSales = function() {
     this.hourlySales.push(cookiesSold); 
   }
 }
-// A loop is created to generate the sales or perform the math for each loaction, so that the values of each loaction or object is updated with the recent calculated sales. The locations are pulled from the 'locationsArray' followed by the incrementing index and the render method.
+// A loop is created to generate the sales or perform the math for each location, so that the values of each location or object is updated with the recent calculated sales. The locations are pulled from the 'locationsArray' followed by the incrementing index and the render method.
 for(let i=0; i< locationsArray.length; i++){
   locationsArray[i].generateSales(); 
 }
@@ -78,11 +83,14 @@ for(let i=0; i< locationsArray.length; i++){
 const locationDivElement = document.getElementById("locations"); 
 // Create a prototype method to render the content of each locations name, and image 
 Locations.prototype.render = function() { 
+  // create the article element that will house the content 
   const locationArticle = document.createElement('article'); 
   locationDivElement.appendChild(locationArticle); 
+  // create the heading for the content 
   const h2Element = document.createElement('h2');
   h2Element.textContent = this.name; 
   locationArticle.appendChild(h2Element); 
+  // images of each location
   const imgElement = document.createElement('img'); 
   imgElement.setAttribute('src', this.photo);
   imgElement.setAttribute('alt', this.name); 
@@ -93,35 +101,55 @@ Locations.prototype.render = function() {
 for(let i=0; i< locationsArray.length; i++){
   locationsArray[i].render(); 
 }
-// Create a normal global function so that you can render the table at the start, then also call it again with new data once you enter data into the form. 
-function renderTable() {  
-  // Create am article element to house the table
+ //Create am article element to house the table
   const locationArticle = document.createElement('article'); 
   locationDivElement.appendChild(locationArticle); 
   // Creat the table element 
   const tableElement = document.createElement('table');
   tableElement.setAttribute('id', 'salesTable'); 
   locationArticle.appendChild(tableElement);
-  // Create the header for the table
+// Create a normal global function so that you can render the table at the start, then also call it again with new data once you enter data into the form. 
+function renderHeader() {  
+  // a new row is created
+  const trElementOne = document.createElement('tr');
+  tableElement.appendChild(trElementOne);
+  
   const thElement = document.createElement('th'); 
-  tableElement.appendChild(thElement);
+  trElementOne.appendChild(thElement);
   // A loop is created to push the operating hours into the headers of the table. This uses the operating hours array to index through each hour. 
   for(let i = 0; i < operatingHours.length; i++){
   const thElement = document.createElement('th'); 
   thElement.textContent = operatingHours[i];
-  tableElement.appendChild(thElement);
+  trElementOne.appendChild(thElement);
   }
+  const thElementOne = document.createElement('th');
+  thElementOne.textContent = 'Daily Total';
+  trElementOne.appendChild(thElementOne); 
+}
   // Another loop is created with a nested loop, so that each location will display in the first column, or literally into five rows with the location name. For each location, the hourly sales number will output using the 'locationsArray' which will index first through the 'locationsArray', and then the hourly sales, which will index through, and the next increment in the locationsArray occurs afterwards. 
-  for(let j = 0; j < locationsArray.length; j++){
+  //for(let j = 0; j < locationsArray.length; j++){
+  Locations.prototype.renderStore = function(){
   const trElement = document.createElement('tr'); 
-  trElement.textContent = locationsArray[j].name;  
+  trElement.textContent = this.name;  
   tableElement.appendChild(trElement); 
-    for(let k = 0; k < operatingHours.length; k++){
+    for(let i = 0; i < operatingHours.length; i++){
     const tdElement = document.createElement('td');
-    tdElement.textContent = locationsArray[j].hourlySales[k]; 
+    tdElement.textContent = this.hourlySales[i]; 
     trElement.appendChild(tdElement); 
-    }    
+    } 
+    const tdElementTotal = document.createElement('td');
+    tdElementTotal.textContent = this.grandTotal;  
+    trElement.appendChild(tdElementTotal); 
   } 
+  function renderAllStores() {
+    for(let i =0; i < locationsArray.length; i++){
+      console.log(locationsArray);
+      locationsArray[i].renderStore();
+    }
+  }
+  
+  //} 
+  function wrapFooter() {
   // A table footer is created with the footer element
   const tfootElement = document.createElement('tfoot'); 
   tfootElement.setAttribute('id', 'tfooter');
@@ -131,11 +159,22 @@ function renderTable() {
   trFootElement.textContent = "Totals: "
   tfootElement.appendChild(trFootElement); 
   // A loop is created to go through the locationsArray and bring back the grand total of sales for each location, and put it into cell within the footer. This will also output the location name along with a message. 
-  for(let j = 0; j<locationsArray.length; j++){
+  let grandHourlyTotal =0;
+  for(let i = 0; i<operatingHours.length; i++){
+    let hourTotal = 0;
+    for(let j =0; j< locationsArray.length; j++){
+      let salesAtThisStoreThisHour = locationsArray[j].hourlySales[i];
+      hourTotal += salesAtThisStoreThisHour;
+      grandHourlyTotal += salesAtThisStoreThisHour;
+    }
   const trFootElement = document.createElement('td'); 
-  trFootElement.textContent = locationsArray[j].grandTotal + ' Total Cookies Sold at ' +locationsArray[j].name; 
+  trFootElement.textContent = hourTotal;
   tfootElement.appendChild(trFootElement); 
     }
+  const trFootTotal = document.createElement('td');
+  trFootTotal.textContent = grandHourlyTotal; 
+  tfootElement.appendChild(trFootTotal); 
   }
-renderTable(); 
-
+renderHeader(); 
+renderAllStores();
+wrapFooter();
