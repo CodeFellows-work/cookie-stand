@@ -14,12 +14,40 @@
       </h1>
   </header> 
     <main> 
-      <h2>Locations</h2> 
+      <h2>Sales By Locations</h2> 
       <div id="locations"> 
-      
-
       </div>
+      <div id ='container'>
+      <form action='salespage.html' method ='POST' id='newLocation'> 
+        <fieldset>
+          <legend>New Location?</legend>
+          <br>
+          <label>Enter The location name:</label>
+          <input id ='name' type='text' name='name' placeholder="Location Name"/>
+          <br><br> 
+          <label>Enter location photo:</label>
+          <input id='photo' type='text' name="photo" placeholder='Enter a photo link'/>
+          <br><br> 
+        </fieldset>
+        <fieldset>
+          <label>Enter the minimum amount of customers:</label>
+          <input id = 'minCustomer' name='min' type="number" placeholder="Minimum Customers" /> <br><br> 
+          <label>Enter the maximum amount of customers:</label>
+          <input id ='maxCustomer' name='max' type="number" placeholder='Maximum Customers'/> <br><br> 
+          <label>Enter the average amount of customers:</label>
+          <input id ='avgCustomer' name='avgCustomer' type="number" step='any' placeholder='Average Customers'/><br><br> 
+        </fieldset>
+        <button type='submit' onClick ="removeTable()">Submit Location</button>
+        </form>
+        </div> 
     </main>
   </body>  
-  <script src="js/app.js"></script>
+  <script src="js/app.js">
+  function removeTable('tfooter')
+    {
+        var tbl = document.getElementById('tfooter');
+        if(tbl) tbl.parentNode.removeChild(tbl);
+    }
+
+  </script>
 </html>
