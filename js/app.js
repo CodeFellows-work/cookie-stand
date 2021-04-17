@@ -113,7 +113,7 @@ function renderHeader() {
   // a new row is created
   const trElementOne = document.createElement('tr');
   tableElement.appendChild(trElementOne);
-  
+
   const thElement = document.createElement('th'); 
   trElementOne.appendChild(thElement);
   // A loop is created to push the operating hours into the headers of the table. This uses the operating hours array to index through each hour. 
@@ -126,8 +126,7 @@ function renderHeader() {
   thElementOne.textContent = 'Daily Total';
   trElementOne.appendChild(thElementOne); 
 }
-  // Another loop is created with a nested loop, so that each location will display in the first column, or literally into five rows with the location name. For each location, the hourly sales number will output using the 'locationsArray' which will index first through the 'locationsArray', and then the hourly sales, which will index through, and the next increment in the locationsArray occurs afterwards. 
-  //for(let j = 0; j < locationsArray.length; j++){
+  // A locations prototype method is made to render the hourly sales into each cell under operating hours
   Locations.prototype.renderStore = function(){
   const trElement = document.createElement('tr'); 
   trElement.textContent = this.name;  
@@ -137,44 +136,48 @@ function renderHeader() {
     tdElement.textContent = this.hourlySales[i]; 
     trElement.appendChild(tdElement); 
     } 
+    // A single cell is created to house the grand total of of all the sales
     const tdElementTotal = document.createElement('td');
     tdElementTotal.textContent = this.grandTotal;  
     trElement.appendChild(tdElementTotal); 
   } 
+  // A normal function is used to render all the stores within the locationsArray 
   function renderAllStores() {
     for(let i =0; i < locationsArray.length; i++){
-      console.log(locationsArray);
-      locationsArray[i].renderStore();
+    console.log(locationsArray);
+    locationsArray[i].renderStore();
     }
   }
-  
-  //} 
+  // a normal function is used to create a footer for the table
   function wrapFooter() {
-  // A table footer is created with the footer element
-  const tfootElement = document.createElement('tfoot'); 
-  tfootElement.setAttribute('id', 'tfooter');
-  tableElement.appendChild(tfootElement);
-  // A cell is created within the footer of the table and the first row will output 'Totals'
-  const trFootElement = document.createElement('td'); 
-  trFootElement.textContent = "Totals: "
-  tfootElement.appendChild(trFootElement); 
-  // A loop is created to go through the locationsArray and bring back the grand total of sales for each location, and put it into cell within the footer. This will also output the location name along with a message. 
-  let grandHourlyTotal =0;
-  for(let i = 0; i<operatingHours.length; i++){
+    // A table footer is created with the footer element
+    const tfootElement = document.createElement('tfoot'); 
+    tfootElement.setAttribute('id', 'tfooter');
+    tableElement.appendChild(tfootElement);
+    // A cell is created within the footer of the table and the first row will output 'Totals'
+    const trFootElement = document.createElement('td'); 
+    trFootElement.textContent = "Totals: "
+    tfootElement.appendChild(trFootElement); 
+    // A for loop is used to calculate the totals of each hour within the operating hours array
+    let grandHourlyTotal =0;
+    for(let i = 0; i<operatingHours.length; i++){
     let hourTotal = 0;
-    for(let j =0; j< locationsArray.length; j++){
+      for(let j =0; j< locationsArray.length; j++){
       let salesAtThisStoreThisHour = locationsArray[j].hourlySales[i];
       hourTotal += salesAtThisStoreThisHour;
       grandHourlyTotal += salesAtThisStoreThisHour;
+      }
+    // A cell is made to hold the hourly total for each store
+    const trFootElement = document.createElement('td'); 
+    trFootElement.textContent = hourTotal;
+    tfootElement.appendChild(trFootElement); 
     }
-  const trFootElement = document.createElement('td'); 
-  trFootElement.textContent = hourTotal;
-  tfootElement.appendChild(trFootElement); 
-    }
-  const trFootTotal = document.createElement('td');
-  trFootTotal.textContent = grandHourlyTotal; 
-  tfootElement.appendChild(trFootTotal); 
+    // A cell is created to house the grandtotal for each store
+    const trFootTotal = document.createElement('td');
+    trFootTotal.textContent = grandHourlyTotal; 
+    tfootElement.appendChild(trFootTotal); 
   }
+  // Normal function calls to render the table contents 
 renderHeader(); 
 renderAllStores();
 wrapFooter();
