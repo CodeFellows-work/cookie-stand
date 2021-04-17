@@ -1,118 +1,145 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 body{
   background-color: salmon; 
 }
 header{ 
+  font-family:'Brush Script MT', cursive;
+  margin: auto;
   border-color: black;
-  background-color: rgba(121, 104, 104, .4);
-  padding: 5px;  
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
   border-style: solid;
   border-width: 5px;
   top: 0px;
   left: 0px; 
-  margin:0px; 
-  width: 100%;
+  width: 1024px; 
+  height: auto;
 }
-article{
-  float: left; 
-  margin-left: 25px; 
+header h1{
+  color:whitesmoke; 
+  font-size: 50pt;
+  text-align: center;
+  justify-content: space-evenly;
 }
-h1 {
-  padding: 2px; 
+#navbar{
+  justify-content: center; 
+}
+ul{
+  margin-top: 20px;
+  margin-left: 170px;
+  padding: 0px;
+}
+ul li{
+  display:inline-flex;
+  justify-content: stretch;
+  font-family:'Brush Script MT', cursive;
   text-align: center; 
-  font-size: 40px; 
-  font-family: 'Roboto' , sans-serif; 
-  font-weight: bold; 
-  color: whitesmoke;  
-  margin: 2px; 
+  font-size: 20pt;
 }
-h2 {
-  margin: 15px; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 30px; 
-  font-weight: bold;
-  font-style: italic; 
+li a{
+  display:block; 
+  padding:10px; 
+  background-color: #1fbed6;
+  width: 200px; 
+  height: 25px; 
+
+}
+li a:visited{
+  color: white;
+}
+li a:hover{
+  background-color: #97c30A; 
+}
+li a:active{
+  color: #FF717E;
+}
+
+#salesTitle{
   color: white; 
+  font-family: 'Permanent Marker', cursive; 
+  font-size: 40pt;
+  width: 600px;
+  height: 70px;
+  display: flex;
+  margin-left: 70px;
+  margin-top: 30px;
 }
-#allImages {
-  height:150pt;
-  width:200pt;  
-  margin: 10px; 
+#locations {
+  font-family: 'Permanent Marker', cursive; 
+  color: white; 
+  font-size: 25pt;
+  width: auto;
+  margin-left: 100px;
 }
-li{
-  list-style-type: square;
-  margin: 10pt; 
-  list-style-position: inside;
+
+img{
+  width:200px; 
+  height: 200px;
+  float: left;
+  margin-bottom: 50px;
 }
-table{
-  margin: 10px; 
-  width: 300px; 
-  height: 200px; 
-  align-content: center; 
-  background-color: rgba(121, 104, 104, .4);
-  padding: 5px;  
-  
-  
+
+#salesTable{
+  font-family:monospace;
+  font-size: 18pt;
+  border-width: thick;
+  border-color:#1fbed6;
+  border-style:groove; 
 }
 th{
-  color: white; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 18px; 
-  margin: 10px; 
-  padding: 10px; 
- 
-  
-}
-tr{
-  color: white; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 18 px; 
-  margin: 20px; 
-  padding: 10px; 
-  width: 2px; 
+  border-width: medium;
+  border-color:#1fbed6;
+  border-style:groove;
 }
 td{
-  color: white; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 15px; 
-  margin: 20px; 
-  padding: 10px; 
-  width: 2px; 
+  border-width: medium;
+  border-color:#1fbed6;
+  border-style:groove;
 }
-tfoot{
-  background-color: rgba(121, 104, 104, .4);
-  padding: 5px;  
-}
-legend{
-  color: white; 
-  font-family: 'Roboto', sans-serif; 
+tr{
+  border-width: medium;
+  border-color:#1fbed6;
+  border-style:groove;
 }
 form{
-  width: 400px;  
-  height: 400px; 
-  align-content: center; 
-  border-color: black;
-  background-color: rgba(121, 104, 104, .4);
-  padding: 5px;  
-  border-style: solid;
-  border-width: 5px;
-  
+  margin-left: 400px;
+  margin-top: 50px;
+  font-family:monospace;
+  font-size: 20pt;
+  border-width: thick;
+  border-color:#1fbed6;
+  border-style:groove;
+  width: 500px;
+  background-color: rgba(255, 255, 255, .2);
+  float:left;
 }
-#container{
-  float: left; 
-  margin-left:35px; 
-}
-input{
-  margin-left: 120px; 
-  margin-bottom: 30px; 
-  float: left; 
-}
-button{
-  float: left; 
-  margin-left: 130px; 
-}
-label{
-  color: white; 
-  font-family: 'Roboto', sans-serif; 
-  float: left; 
-}
+#heart {
+    border: none;
+    background-color:salmon;
+    position: relative;
+    width: 100px;
+    height: 90px;
+    margin-left: 200px;
+    }
+    #heart:before,
+    #heart:after {
+      position: absolute;
+      content: "Click to Submit!";
+      left: 50px;
+      top: 0;
+      width: 50px;
+      height: 80px;
+      background: red;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+    #heart:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+    p{
+      text-align:center; 
+    }
