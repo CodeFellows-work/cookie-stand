@@ -3,10 +3,24 @@
 body{
   background-color: salmon; 
 }
+#aboutus{
+  font-family:'Brush Script MT', cursive;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: 1024px; 
+  height: auto;
+}
 header{ 
   font-family:'Brush Script MT', cursive;
   margin: auto;
-  border-color: black;
+  border-color: #1fbed6;
   background-color: rgba(255, 255, 255, .2);
   padding:25px 36px;  
   border-style: solid;
@@ -41,7 +55,7 @@ li a{
   display:block; 
   padding:10px; 
   background-color: #1fbed6;
-  width: 200px; 
+  width: 150px; 
   height: 25px; 
 
 }
@@ -70,7 +84,7 @@ li a:active{
   color: white; 
   font-size: 25pt;
   width: auto;
-  margin-left: 100px;
+  margin-left: 200px;
 }
 
 img{
@@ -86,6 +100,7 @@ img{
   border-width: thick;
   border-color:#1fbed6;
   border-style:groove; 
+  margin-left: 100px;
 }
 th{
   border-width: medium;
@@ -115,31 +130,175 @@ form{
   float:left;
 }
 #heart {
-    border: none;
-    background-color:salmon;
-    position: relative;
-    width: 100px;
-    height: 90px;
-    margin-left: 200px;
+  border: none;
+  background-color:salmon;
+  position: relative;
+  width: 100px;
+  height: 90px;
+  margin-left: 300px;
+  margin-bottom: 50px;
+  }
+  #heart:before,
+  #heart:after {
+    position: absolute;
+    content: "Click to Submit!";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: red;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
     }
-    #heart:before,
-    #heart:after {
-      position: absolute;
-      content: "Click to Submit!";
-      left: 50px;
-      top: 0;
-      width: 50px;
-      height: 80px;
-      background: red;
-      border-radius: 50px 50px 0 0;
-      transform: rotate(-45deg);
-      transform-origin: 0 100%;
+p{
+  text-align:center; 
+  margin-top: 50px;
+  margin-left: 140px;
+  margin-right: 140px;
+  font-size: 30pt;
+  font-family:cursive;
+  color: white;
+
     }
-    #heart:after {
-      left: 0;
-      transform: rotate(45deg);
-      transform-origin: 100% 100%;
+h2{ 
+  color:whitesmoke; 
+  font-size: 50pt;
+  text-align: left;
+  font-family:'Permanent Marker', cursive;  
     }
-    p{
-      text-align:center; 
+#chinook{
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 300px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: auto; 
+  height: auto;
     }
+#salmon{
+  margin-top: 50px;
+  margin-left: 0px;
+  margin-right: 600px;
+  top: 0px;
+  left: 0px; 
+  width: auto; 
+  height: auto;
+      }
+#contact{
+  font-family:'Brush Script MT', cursive;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: 1024px; 
+  height: auto;
+    }
+#cookie{
+  margin-top: 50px;
+  margin-left: 160px;
+  margin-right: 300px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: auto; 
+  height: auto;
+    }
+#contactUs{  
+  font-family:'Brush Script MT', cursive;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: 1024px; 
+  height: auto;
+    }
+#chinookOne{
+  margin-top: 50px;
+  margin-left: 160px;
+  border-color:#1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: auto; 
+  height: auto;
+        }
+.photos{
+  margin-top: 50px;
+  margin-left: 160px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  display: flex;
+}
+#homepageHead{
+  font-family:'Brush Script MT', cursive;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-color:#1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: 1024px; 
+  height: auto;
+}
+#homeP{
+  font-family:'Brush Script MT', cursive;
+  margin-top: 50px;
+  margin-left: 150px;
+  border-color:#1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:25px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: 1024px; 
+  height: auto;
+}
+#thirdEye{
+  margin-top: 70px;
+  margin-left: 350px;
+  margin-right: 300px;
+  border-color: #1fbed6;
+  background-color: rgba(255, 255, 255, .2);
+  padding:30px 36px;  
+  border-style: solid;
+  border-width: 5px;
+  top: 0px;
+  left: 0px; 
+  width: auto; 
+  height: auto;
+}
